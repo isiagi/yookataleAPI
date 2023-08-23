@@ -19,7 +19,17 @@ const userController = {
   },
 
   register: async (req: Request, res: Response) => {
-    const { username, password, email } = req.body;
+    const {
+      email,
+      password,
+      createdAt,
+      location,
+      bio,
+      address,
+      telephone,
+      socialmedia,
+      userImage,
+    } = req.body;
 
     const user = await User.findOne({ email });
     if (user) {
@@ -28,9 +38,15 @@ const userController = {
 
     try {
       const newUser = await User.create({
-        username: username,
-        password: password,
-        email: email,
+        email,
+        password,
+        createdAt,
+        location,
+        bio,
+        address,
+        telephone,
+        socialmedia,
+        userImage,
       });
       return signToken(res, 200, newUser);
     } catch (error: any) {

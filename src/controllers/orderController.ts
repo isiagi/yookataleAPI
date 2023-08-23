@@ -6,21 +6,9 @@ import { log } from "console";
 
 const orderController = {
   getOrders: async (req: Request, res: Response) => {
+    const loggedInUser = req.user.id;
     try {
-      let orders;
-      if (req.user.role === true) {
-        orders = await Order.find()
-          .populate({
-            path: "books.bookId",
-          })
-          .populate({ path: "userId", select: "_id email" });
-      } else {
-        orders = await Order.find({ userId: req.user.id })
-          .populate({
-            path: "books.bookId",
-          })
-          .populate({ path: "userId", select: "_id email" });
-      }
+      let orders = await Order.find({ userId: loggedInUser });
 
       res.status(200).json({ data: orders });
     } catch (error) {
@@ -28,22 +16,25 @@ const orderController = {
       res.status(500).json({ error });
     }
   },
+
   createOrder: (req, res) => {
     try {
       const { cartItems } = req.body;
 
       let totalPrice = 0;
-      const books = [];
+      const products = [];
 
       cartItems.forEach((item) => {
-        books.push({ bookId: item._id, qty: item.qty });
+        console.log(item);
+
+        products.push({ productId: item._id, qty: item.qty });
         totalPrice += item.price * item.qty;
       });
 
       const createOrder = new Order({
         userId: req.user.id,
-        books: books,
-        totalPrice: totalPrice,
+        products,
+        totalPrice,
       });
 
       createOrder.save();
@@ -57,25 +48,25 @@ const orderController = {
   getOrderById: async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
-      const order = await Order.findById(id)
-        .populate({
-          path: "books.bookId",
-        })
-        .populate({ path: "userId", select: "_id email" });
+      const order = await Order.findById(id).populate({
+        path: "userId",
+        select: "_id email",
+      });
 
       res.status(200).json({ data: order });
     } catch (error) {
       res.status(500).json({ error });
     }
   },
+
   deleteOrder: async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       const order = await Order.findByIdAndDelete(id);
       if (order === null) {
-        return res.status(400).json({ message: "Book Not Found" });
+        return res.status(400).json({ message: "Order Not Found" });
       }
-      res.status(200).json({ message: `order successfully deleted` });
+      res.status(200).json({ message: `Order successfully deleted` });
     } catch (error) {
       res.status(500).json({ error });
     }

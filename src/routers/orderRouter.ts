@@ -10,7 +10,7 @@ router.route("/").get(authenticationMiddleware, orderController.getOrders);
 router
   .route("/create")
   .post(authenticationMiddleware, orderController.createOrder);
-router.route("/my/:id").get(orderController.getOrderById);
+router.route("/myOrder/:id").get(orderController.getOrderById);
 router.route("/delete/:id").delete(orderController.deleteOrder);
 
 export default router;

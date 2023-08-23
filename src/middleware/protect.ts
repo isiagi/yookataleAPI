@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import JWT from "jsonwebtoken";
 
-type CustomRequest = Request & { user: any };
+type CustomRequest = Request & { user: any } & any;
 
 export const authenticationMiddleware = async (
   req: CustomRequest,
@@ -20,8 +20,8 @@ export const authenticationMiddleware = async (
 
   try {
     const decode: any = JWT.verify(token, process.env.JWT_SECRET as string);
-    const { id, role } = decode;
-    req.user = { id, role };
+    const { id } = decode;
+    req.user = { id };
     next();
   } catch (error) {
     res.status(400).json({ message: error });

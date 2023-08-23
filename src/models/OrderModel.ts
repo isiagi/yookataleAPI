@@ -5,6 +5,7 @@ interface UserOrder {
   totalPrice: Number;
   status: String;
   createdAt: Date;
+  products: [];
 }
 
 const orderSchema = new Schema<UserOrder>({
@@ -17,6 +18,19 @@ const orderSchema = new Schema<UserOrder>({
     type: Number,
     required: [true, "Please provide total price"],
   },
+  products: [
+    {
+      productId: {
+        type: Schema.Types.ObjectId,
+        ref: "products",
+        required: true,
+      },
+      qty: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
   status: {
     type: String,
     required: true,

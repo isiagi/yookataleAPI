@@ -9,7 +9,7 @@ dotenv.config();
 interface User {
   email: String;
   password: String;
-  createdAt: String;
+  createdAt: Date;
   location: String;
   bio: String;
   address: String;

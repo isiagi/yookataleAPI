@@ -54,22 +54,22 @@ The API will be accessible at http://localhost:5000 by default. You can change t
 
 `/api/v1/auth/ - Authentication, User and login operations`
 
-### Built With
+- Built With
 
-## Node.js - JavaScript runtime
+- Node.js - JavaScript runtime
 
-## Express.js - Web framework for Node.js
+- Express.js - Web framework for Node.js
 
-## MongoDB - NoSQL database
+- MongoDB - NoSQL database
 
-## Mongoose - MongoDB object modeling for Node.js
+- Mongoose - MongoDB object modeling for Node.js
 
-## bcryptjs - Password hashing library
+- bcryptjs - Password hashing library
 
-## jsonwebtoken - JWT authentication library
+- jsonwebtoken - JWT authentication library
 
-## cors - Cross-Origin Resource Sharing
+- cors - Cross-Origin Resource Sharing
 
-## dotenv - Environment variable management
+- dotenv - Environment variable management
 
-## TypeScript - Typed JavaScript
+- TypeScript - Typed JavaScript

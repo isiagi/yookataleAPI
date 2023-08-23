@@ -44,7 +44,7 @@ npm run dev - Start the server in development mode with automatic reloading.
 
 To start the application in development mode, run:
 
-## npm run dev
+`npm run dev`
 
 The API will be accessible at http://localhost:5000 by default. You can change the port in the .env file.
 

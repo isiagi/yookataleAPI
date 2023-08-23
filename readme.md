@@ -50,18 +50,26 @@ The API will be accessible at http://localhost:5000 by default. You can change t
 
 ### API Routes
 
-## /api/v1/order/ - Manage order-related operations.
+` /api/v1/order/ - Manage order-related operations.`
 
-## /api/v1/auth/ - Authentication, User and login operations.
+`/api/v1/auth/ - Authentication, User and login operations`
 
 ### Built With
 
-Node.js - JavaScript runtime
-Express.js - Web framework for Node.js
-MongoDB - NoSQL database
-Mongoose - MongoDB object modeling for Node.js
-bcryptjs - Password hashing library
-jsonwebtoken - JWT authentication library
-cors - Cross-Origin Resource Sharing
-dotenv - Environment variable management
-TypeScript - Typed JavaScript
+## Node.js - JavaScript runtime
+
+## Express.js - Web framework for Node.js
+
+## MongoDB - NoSQL database
+
+## Mongoose - MongoDB object modeling for Node.js
+
+## bcryptjs - Password hashing library
+
+## jsonwebtoken - JWT authentication library
+
+## cors - Cross-Origin Resource Sharing
+
+## dotenv - Environment variable management
+
+## TypeScript - Typed JavaScript

@@ -21,7 +21,7 @@ npm install
 
 ### Configuration
 
-Create a .env file in the root directory of the project and add your configuration settings. You can use the provided .env.example file as a template.
+Create a .env file in the root directory of the project and add your configuration settings. You can use the provided .env.sample file as a template.
 
 ```
 # .env

@@ -20,6 +20,8 @@ const limit = rateLimit({
 
 app.use(limit);
 
+app.set("trust proxy", 1);
+
 app.use(cors());
 app.use(express.json());
 

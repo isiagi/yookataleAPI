@@ -1,3 +1,4 @@
+import uploader from "../../utils/uploader";
 import User from "../models/UserModel";
 import { Request, Response } from "express";
 
@@ -21,17 +22,8 @@ const userController = {
   },
 
   register: async (req: Request, res: Response) => {
-    const {
-      email,
-      password,
-      createdAt,
-      location,
-      bio,
-      address,
-      telephone,
-      socialmedia,
-      userImage,
-    } = req.body;
+    const { email, password, location, bio, address, telephone, socialmedia } =
+      req.body;
 
     const user = await User.findOne({ email });
     if (user) {
@@ -39,10 +31,11 @@ const userController = {
     }
 
     try {
+      const userImage = await uploader(req, res);
+
       const newUser = await User.create({
         email,
         password,
-        createdAt,
         location,
         bio,
         address,
@@ -69,6 +62,8 @@ const userController = {
     const loggedInUser = req.user.id; // Assuming you pass the user's ID as a parameter
 
     try {
+      const userImage = await uploader(req, res);
+
       const updateFields = {
         email: req.body.email,
         location: req.body.location,
@@ -76,7 +71,7 @@ const userController = {
         address: req.body.address,
         telephone: req.body.telephone,
         socialmedia: req.body.socialmedia,
-        // Add more fields as needed
+        userImage,
       };
 
       // Use Mongoose's update method to update the user

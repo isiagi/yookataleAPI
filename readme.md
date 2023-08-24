@@ -25,10 +25,20 @@ Create a .env file in the root directory of the project and add your configurati
 
 ```
 # .env
+
 PORT=3000
+
 localDB=mongodb://localhost:27017/yookatale
+
 PROD_DB = your-productionUrl
+
 JWT_SECRET=your-secret-key
+
+CLOUD_NAME: Cloudinary CLOUD_NAME,
+
+API_KEY: Cloudinary API_KEY,
+
+API_SECRET: Cloudinary API_SECRET,
 
 ```
 
@@ -54,7 +64,7 @@ The API will be accessible at http://localhost:5000 by default. You can change t
 
 `/api/v1/auth/ - Authentication, User and login operations`
 
-- Built With
+### Built With
 
 - Node.js - JavaScript runtime
 
@@ -71,5 +81,7 @@ The API will be accessible at http://localhost:5000 by default. You can change t
 - cors - Cross-Origin Resource Sharing
 
 - dotenv - Environment variable management
+
+- Cloudinary - Image and Video Management for the Cloud
 
 - TypeScript - Typed JavaScript

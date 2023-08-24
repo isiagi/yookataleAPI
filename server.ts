@@ -4,7 +4,7 @@ import userRouter from "./src/routers/userRouter";
 import ordersRouter from "./src/routers/orderRouter";
 import dbConnect from "./src/db/connect";
 
-const app = express();
+const app: Express = express();
 
 app.use(cors());
 app.use(express.json());

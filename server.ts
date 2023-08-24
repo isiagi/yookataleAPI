@@ -1,4 +1,7 @@
 import express, { Express, Request, Response } from "express";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
 import cors from "cors";
 import userRouter from "./src/routers/userRouter";
 import ordersRouter from "./src/routers/orderRouter";
@@ -6,8 +9,23 @@ import dbConnect from "./src/db/connect";
 
 const app: Express = express();
 
+app.use(helmet());
+
+// Rate Limiting
+const limit = rateLimit({
+  max: 80, // max requests
+  windowMs: 60 * 60 * 1000, // 1 Hour of ban
+  message: "Too many requests", // error message to send
+});
+
+app.use(limit);
+
 app.use(cors());
 app.use(express.json());
+
+// Data Sanitization against NoSQL Injection Attacks
+app.use(mongoSanitize());
+
 app.use("/api/v1/auth/", userRouter);
 app.use("/api/v1/order/", ordersRouter);
 
